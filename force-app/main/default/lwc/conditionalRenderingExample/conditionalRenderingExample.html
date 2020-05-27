@@ -1,0 +1,11 @@
+<template>
+    <lightning-input type="checkbox" label="Show Div" onchange={showDivHandler}></lightning-input>
+    <template if:true={displayDiv}>
+        <!-- Instead of if-else like statements, you need to use if:true and if:false directives -->
+        <div>I am here</div>
+    </template>
+    <template if:false={displayDiv}>
+        <!-- Instead of if-else like statements, you need to use if:true and if:false directives -->
+        <div>I am false</div>
+    </template>
+</template>
