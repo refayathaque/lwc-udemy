@@ -2,6 +2,7 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>48.0</apiVersion>
     <isExposed>true</isExposed>
+    <!-- isExposed attribute controls access to your LWC, `true` means the it's available in all orgs, `false` means it's available only in your org -->
     <targets>
         <target>lightning__RecordPage</target>
         <target>lightning__AppPage</target>
