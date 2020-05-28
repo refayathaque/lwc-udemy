@@ -9,4 +9,14 @@
         <!-- Instead of if-else like statements, you need to use if:true and if:false directives -->
         <div>I am false</div>
     </template>
+    <template for:each={cityList} for:item="city">
+        <!-- Use for:* directives and associated syntax to loop/iterate over arrays/lists -->
+        <!-- Always make sure you assign a unique value within the key attribute as this is being used by the framework to uniquely idenify an element -->
+        <p key={city}>{city}</p>
+    </template>
+    <template iterator:it={cityList}>
+        <!-- Similar in function to the for:* directives above, the iterator directive is kind of a shorthand version and has the advantage of being able to directly access the first and last elements -->
+        <!-- Iterator directive can be very useful if you want to apply special rendering on your elements dynamically based on their index. It has a few useful properties like, `it.first`, `it.last` and `it.index` -->
+        <p key={it.value}>{it.value}</p>
+    </template>
 </template>
