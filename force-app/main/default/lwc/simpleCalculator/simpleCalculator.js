@@ -2,6 +2,8 @@ import { LightningElement, track } from 'lwc';
 
 export default class SimpleCalculator extends LightningElement {
     @track currentResult;
+    @track previousResults = [];
+    @track showPreviousResults = false;
 
     firstNumber;
     secondNumber;
@@ -17,31 +19,36 @@ export default class SimpleCalculator extends LightningElement {
     }
 
      additionHandler() {
-         const firstN = parseInt(this.firstNumber);
-         const secondN = parseInt(this.secondNumber);
+        const firstN = parseInt(this.firstNumber);
+        const secondN = parseInt(this.secondNumber);
         //  ^ bc html textbox always returns a string value
         this.currentResult = `Result of ${firstN} + ${secondN} is ${firstN + secondN}`
         // Template literals are enclosed by the back-tick (``) and can contain placeholders indicated by the dollar sign and curly braces
+        this.previousResults.push(this.currentResult);
      }
-
 
      subtractionHandler() {
-         const firstN = parseInt(this.firstNumber);
-         const secondN = parseInt(this.secondNumber);
+        const firstN = parseInt(this.firstNumber);
+        const secondN = parseInt(this.secondNumber);
         this.currentResult = `Result of ${firstN} - ${secondN} is ${firstN - secondN}`
+        this.previousResults.push(this.currentResult);
      }
-
 
      multiplicationHandler() {
-         const firstN = parseInt(this.firstNumber);
-         const secondN = parseInt(this.secondNumber);
+        const firstN = parseInt(this.firstNumber);
+        const secondN = parseInt(this.secondNumber);
         this.currentResult = `Result of ${firstN} * ${secondN} is ${firstN * secondN}`
+        this.previousResults.push(this.currentResult);
      }
 
-
      divisionHandler() {
-         const firstN = parseInt(this.firstNumber);
-         const secondN = parseInt(this.secondNumber);
+        const firstN = parseInt(this.firstNumber);
+        const secondN = parseInt(this.secondNumber);
         this.currentResult = `Result of ${firstN} / ${secondN} is ${firstN / secondN}`
+        this.previousResults.push(this.currentResult);
+     }
+
+     showPreviousResultsToggle(event) {
+        this.showPreviousResults = event.target.checked;
      }
 }
