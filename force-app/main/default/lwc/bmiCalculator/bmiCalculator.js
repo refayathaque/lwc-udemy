@@ -1,7 +1,7 @@
 import { LightningElement, track } from 'lwc';
 
 export default class BmiCalculator extends LightningElement {
-    cardTitle = 'BMI Calculator';
+    cardTitle = 'BMI Calculator 2.0';
     
     // code below for pre spring '20 release when you needed @track to make primitive private properties reactive, now you don't
     // weight; // primitive private non-reactive (any change to property NOT reflected in template) property
