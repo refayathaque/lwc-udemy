@@ -3,10 +3,26 @@
         <ul>
             <template for:each={meetingRoomsInfo} for:item="room">
                 <li key={room.roomName} style="padding: 10px">
-                    <!-- When you use your LWC inside other components, use kebab-case instead of camelCase -->
+                    <!-- When rendering your child components use kebab-case instead of camelCase -->
                     <c-meeting-room meeting-room-info={room} show-room-info></c-meeting-room>
+                </li>
+            </template>
+
+            <!-- Same thing as above but using slots -->
+            <!-- FYI we had to create a separate meetingRoomSlots component because having `meetingRoomInfo` public property in component `meetingRoom` requires that the public property is passed in from the parent component. But in this case, since we are passing in the markup (lightning-tile) WITH all the data it needs we don't have to pass in `meeting-room-info` like we're having to do above. So it seems like the public property set by @api doesn't allow for it to be "optional" (2 Jun 11:17 PM)-->
+            <template for:each={slotsMeetingRoomsInfo} for:item="room">
+                <li key={room.roomName} style="padding: 10px">
+                    <c-meeting-room-slots show-room-info>
+                        <!-- We want the lightning-tile below to be inserted into the `roomInfo` slot in the child component, so we need to pass into the `room` attribute to the lightning-tile component, but in the child component we are using `slot` as a tag -->
+                        <lightning-tile label={room.roomName} slot="roomInfo">
+                            <p class="slds-truncate" title="room.roomCapacity">Room Capacity: {room.roomCapacity}</p>
+                        </lightning-tile>
+                        <div>This additional markup will go in the unnamed slot</div>
+                    </c-meeting-room-slots>
                 </li>
             </template>    
         </ul>
+
+
     </lightning-card>
 </template>
