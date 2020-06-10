@@ -1,9 +1,10 @@
 import { LightningElement, track } from 'lwc';
+import getBMI from 'c/bmi';
 
 export default class BmiCalculator extends LightningElement {
     cardTitle = 'BMI Calculator 2.0';
     
-    // code below for pre spring '20 release when you needed @track to make primitive private properties reactive, now you don't
+    // !!! code below for PRE spring '20 release when you needed @track to make primitive private properties reactive, now you don't
     // weight; // primitive private non-reactive (any change to property NOT reflected in template) property
     // height;
     //  @track bmi; // primitive private reactive (any change to property reflected in template) property
@@ -26,11 +27,13 @@ export default class BmiCalculator extends LightningElement {
     }
 
     calculateBMI() {
-        try {
-            this.bmiData.result = this.bmiData.weight / (this.bmiData.height * this.bmiData.height)
-        } catch (error) {
-            this.bmiData.result = undefined;
-        }
+        // try {
+        //     this.bmiData.result = this.bmiData.weight / (this.bmiData.height * this.bmiData.height)
+        // } catch (error) {
+        //     this.bmiData.result = undefined;
+        // }
+        // ^ importing and using below
+        this.bmiData.result = getBMI(this.bmiData.weight, this.bmiData.height)
     }
 
     // Getters can be used to compute the value of a property

@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import { fireEvent } from 'c/pubsub';
-// `c/` denotes a custom module we created therefore we need to give it a custom namespace
+// `c/` denotes a custom module we created, therefore we need to give it a custom namespace
 import { CurrentPageReference } from 'lightning/navigation';
 
 export default class MeetingRoom extends LightningElement {
