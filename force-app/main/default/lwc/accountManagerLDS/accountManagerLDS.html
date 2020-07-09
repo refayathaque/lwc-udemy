@@ -11,7 +11,9 @@
             </lightning-layout-item>
             <lightning-layout-item size="6" padding="around-small">
                 <lightning-card title="View an Existing Account">
-                    
+                    <p><lightning-formatted-text value={retrievedAccountName} ></lightning-formatted-text></p>
+                    <p><lightning-formatted-text value={retrievedAccountPhone} ></lightning-formatted-text></p>
+                    <p><lightning-formatted-text value={retrievedAccountWebsite} ></lightning-formatted-text></p>
                 </lightning-card>
             </lightning-layout-item>
         </lightning-layout>
